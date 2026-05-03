@@ -113,10 +113,10 @@ Generate submission.csv
 | Model | AUC-ROC | F1-Score | Accuracy | Precision | Recall |
 |---|---|---|---|---|---|
 | LR Baseline |  0.7433 | 0.0935 | 0.6579 | 0.0502 | 0.6895 |
-| RF Baseline | — | — | — | — | — |
-| XGB Baseline | — | — | — | — | — |
-| **RF Optuna** | **—** | **—** | **—** | **—** | **—** |
-| **XGB Optuna** | **—** | **—** | **—** | **—** | **—** |
+| RF Baseline | 0.8754 | 0.3848 | 0.9547 | 0.2951 | 0.5527 |
+| XGB Baseline | 0.9272 | 0.3417 | 0.9248 | 0.2202 | 0.7617 |
+| **RF Optuna** | 0.9084 | 0.5693 | 0.9830 | 0.8145 | 0.4375 |
+| **XGB Optuna** | 0.9366 | 0.7119 | 0.9872 | 0.8445 | 0.6152 |
 
 **Metrik utama: AUC-ROC** — dipilih karena dataset sangat imbalanced (~3.5% fraud).
 
