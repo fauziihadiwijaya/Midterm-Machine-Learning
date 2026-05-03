@@ -9,8 +9,8 @@
 
 | | |
 |---|---|
-| **Nama** | `[ISI NAMA KAMU]` |
-| **NIM** | `[ISI NIM KAMU]` |
+| **Nama** | Mohammad Fauzi Hadiwijaya |
+| **NIM** | 101032300044 |
 | **Kelas** | `[ISI KELAS KAMU]` |
 
 ---
