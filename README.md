@@ -112,7 +112,7 @@ Generate submission.csv
 
 | Model | AUC-ROC | F1-Score | Accuracy | Precision | Recall |
 |---|---|---|---|---|---|
-| LR Baseline | — | — | — | — | — |
+| LR Baseline |  0.7433 | 0.0935 | 0.6579 | 0.0502 | 0.6895 |
 | RF Baseline | — | — | — | — | — |
 | XGB Baseline | — | — | — | — | — |
 | **RF Optuna** | **—** | **—** | **—** | **—** | **—** |
