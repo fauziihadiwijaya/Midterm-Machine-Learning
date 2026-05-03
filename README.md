@@ -11,7 +11,7 @@
 |---|---|
 | **Nama** | Mohammad Fauzi Hadiwijaya |
 | **NIM** | 101032300044 |
-| **Kelas** | `[ISI KELAS KAMU]` |
+| **Kelas** | TK-47-04 |
 
 ---
 
