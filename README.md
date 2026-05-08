@@ -1,7 +1,6 @@
-# 🔍 Midterm Machine Learning — Fraud Detection
+# 🤖 Midterm Machine Learning — End-to-End ML Pipeline
 
-> **End-to-End Machine Learning Pipeline untuk Deteksi Transaksi Fraudulent**
-> dengan Optuna Hyperparameter Tuning & MLflow Experiment Tracking
+> **Implementasi End-to-End Machine Learning Pipeline** mencakup Klasifikasi, Regresi, dan Clustering dengan Optuna Hyperparameter Tuning & MLflow Experiment Tracking
 
 ---
 
@@ -15,12 +14,9 @@
 
 ---
 
-## 📌 Deskripsi Proyek
+## 📌 Deskripsi Repository
 
-Repository ini berisi implementasi **end-to-end machine learning pipeline** untuk mendeteksi transaksi online yang bersifat fraudulent. Dataset yang digunakan adalah **IEEE-CIS Fraud Detection** dari Kaggle.
-
-### 🎯 Tujuan
-Membangun model klasifikasi yang memprediksi **probabilitas** sebuah transaksi bersifat fraud (`isFraud`), dievaluasi menggunakan metrik **AUC-ROC**.
+Repository ini berisi **3 project end-to-end machine learning** yang dikerjakan sebagai tugas UTS mata kuliah Machine Learning. Setiap project mencakup pipeline lengkap mulai dari preprocessing, training, hyperparameter tuning (Optuna), experiment tracking (MLflow), hingga evaluasi model.
 
 ---
 
@@ -29,68 +25,115 @@ Membangun model klasifikasi yang memprediksi **probabilitas** sebuah transaksi b
 ```
 midterm-machine-learning/
 │
-├── fraud_detection_ml_v2.ipynb   # Notebook utama: pipeline lengkap + Optuna + MLflow
-├── submission.csv                # Output prediksi probabilitas fraud untuk test set
-└── README.md                     # Dokumentasi ini
+├── fraud_detection.ipynb          # Task 1: Fraud Detection (Klasifikasi)
+├── regression_song_year.ipynb     # Task 2: Song Year Prediction (Regresi)
+├── clustering_customer.ipynb      # Task 3: Customer Clustering
+├── submission.csv                 # Output prediksi fraud detection
+└── README.md                      # Dokumentasi ini
 ```
 
 ---
 
-## 🔄 Pipeline Overview
+## 📂 Task Overview
 
-```
-Raw Data (train_transaction.csv + test_transaction.csv)
-   │
-   ▼
-Exploratory Data Analysis (EDA)
-   │  - Distribusi target (class imbalance ~3.5% fraud)
-   │  - Missing value analysis
-   │  - Distribusi TransactionAmt per kelas
-   ▼
-Data Preprocessing & Feature Engineering
-   │  - Drop kolom missing > 80%
-   │  - Feature baru: log(TransactionAmt), jam, hari, desimal amount
-   │  - Label Encoding untuk fitur kategorik
-   │  - Imputasi median untuk missing values
-   ▼
-Handle Class Imbalance
-   │  - SMOTE (sampling_strategy=0.2)
-   │  - class_weight / scale_pos_weight pada model
-   ▼
-MLflow Setup → Experiment: "fraud-detection-ml"
-   │
-   ▼
-Baseline Model Training (+ MLflow logging otomatis)
-   │  - Logistic Regression
-   │  - Random Forest
-   │  - XGBoost
-   ▼
-Hyperparameter Tuning dengan Optuna (20 trials per model)
-   │  - Random Forest Optuna → log ke MLflow
-   │  - XGBoost Optuna      → log ke MLflow
-   ▼
-Evaluasi & Perbandingan (5 model total)
-   │  - AUC-ROC, F1, Accuracy, Precision, Recall
-   │  - ROC Curves overlay
-   │  - Confusion Matrices
-   │  - Feature Importance
-   ▼
-MLflow Tracking Summary
-   ▼
-Generate submission.csv
-```
+### Task 1 — 🔍 Fraud Detection (Klasifikasi)
+**Dataset**: IEEE-CIS Fraud Detection (`train_transaction.csv`, `test_transaction.csv`)
+
+Membangun model klasifikasi untuk memprediksi probabilitas transaksi online bersifat fraudulent (`isFraud`).
+
+**Pipeline:**
+- EDA & analisis class imbalance (~3.5% fraud)
+- Preprocessing: drop kolom missing >80%, label encoding, imputasi median
+- Feature engineering: log transform, jam & hari transaksi
+- Handle imbalance: SMOTE
+- Training 5 model: LR baseline → RF baseline → XGB baseline → RF Optuna → XGB Optuna
+- Evaluasi: AUC-ROC, F1-Score, Accuracy, Precision, Recall
+- MLflow tracking semua run
+
+**Model yang digunakan:**
+| Model | Keterangan |
+|---|---|
+| Logistic Regression | Baseline linear |
+| Random Forest (baseline) | Default params |
+| XGBoost (baseline) | Default params |
+| Random Forest (Optuna) | 20 trials tuning |
+| XGBoost (Optuna) | 20 trials tuning |
+
+**Hasil Evaluasi (Validation Set):**
+| Model | AUC-ROC | F1-Score | Accuracy |
+|---|---|---|---|
+| LR Baseline | — | — | — |
+| RF Baseline | — | — | — |
+| XGB Baseline | — | — | — |
+| RF Optuna | — | — | — |
+| XGB Optuna | — | — | — |
+
+> *Isi tabel setelah notebook dijalankan*
 
 ---
 
-## 🤖 Model yang Digunakan
+### Task 2 — 🎵 Song Year Prediction (Regresi)
+**Dataset**: `midterm-regresi-dataset.csv`
 
-| Model | Tipe | Keterangan |
+Membangun model regresi untuk memprediksi tahun rilis lagu berdasarkan fitur audio (timbre dan karakteristik sinyal musik).
+
+**Pipeline:**
+- EDA: distribusi tahun rilis, korelasi fitur dengan target
+- Preprocessing: outlier clipping (IQR x3), imputasi median, standard scaling
+- Training 5 model: Ridge → RF baseline → XGB baseline → RF Optuna → XGB Optuna
+- Evaluasi: RMSE, MAE, R², MSE
+- MLflow tracking semua run
+- **LIME** untuk interpretasi prediksi model secara lokal
+
+**Model yang digunakan:**
+| Model | Keterangan |
+|---|---|
+| Ridge Regression | Baseline linear |
+| Random Forest (baseline) | Default params |
+| XGBoost (baseline) | Default params |
+| Random Forest (Optuna) | 20 trials tuning |
+| XGBoost (Optuna) | 20 trials tuning |
+
+**Hasil Evaluasi (Validation Set):**
+| Model | RMSE | MAE | R² |
+|---|---|---|---|
+| Ridge Baseline | — | — | — |
+| RF Baseline | — | — | — |
+| XGB Baseline | — | — | — |
+| RF Optuna | — | — | — |
+| XGB Optuna | — | — | — |
+
+> *Isi tabel setelah notebook dijalankan*
+
+---
+
+### Task 3 — 👥 Customer Clustering
+**Dataset**: `clusteringmidterm.csv`
+
+Membangun pipeline clustering untuk mengelompokkan customer berdasarkan perilaku penggunaan kartu kredit.
+
+**Pipeline:**
+- EDA: distribusi fitur, heatmap korelasi, deteksi outlier
+- Preprocessing: imputasi median, outlier clipping, standard scaling, PCA 2D
+- Menentukan k optimal: Elbow Method + Silhouette Score
+- Training 3 model: K-Means, Hierarchical Clustering (+ Dendrogram), DBSCAN
+- Evaluasi: Silhouette Score, Davies-Bouldin Score, Calinski-Harabasz Score
+- Visualisasi: PCA 2D, Heatmap profil cluster, Radar chart
+
+**Hasil Evaluasi:**
+| Model | Silhouette ↑ | Davies-Bouldin ↓ | Calinski-Harabasz ↑ |
+|---|---|---|---|
+| K-Means | — | — | — |
+| Hierarchical | — | — | — |
+| DBSCAN | — | — | — |
+
+> *Isi tabel setelah notebook dijalankan*
+
+**Interpretasi Cluster (K-Means, k=2):**
+| Cluster | Nama Segmen | Karakteristik |
 |---|---|---|
-| **Logistic Regression** | Baseline | Model linear; cepat, mudah diinterpretasi |
-| **Random Forest (baseline)** | Ensemble | 200 pohon; default hyperparameter |
-| **XGBoost (baseline)** | Gradient Boosting | Default hyperparameter |
-| **Random Forest (Optuna)** | Ensemble | Hyperparameter dioptimasi Optuna (20 trials) |
-| **XGBoost (Optuna)** | Gradient Boosting | Hyperparameter dioptimasi Optuna (20 trials) |
+| 0 | Premium Active Customer | Balance tinggi, purchases sangat tinggi (2499), credit limit besar (6717), rajin membayar |
+| 1 | Cash-Dependent Customer | Cash advance tinggi (889), purchases rendah (328), sering tarik tunai, risiko lebih tinggi |
 
 ---
 
@@ -98,27 +141,13 @@ Generate submission.csv
 
 | Tool | Kegunaan |
 |---|---|
-| `scikit-learn` | Preprocessing, baseline models, evaluasi |
-| `xgboost` | XGBoost classifier |
+| `scikit-learn` | Preprocessing, models, evaluasi |
+| `xgboost` | XGBoost classifier & regressor |
 | `imbalanced-learn` | SMOTE untuk class imbalance |
-| **`optuna`** | Hyperparameter tuning otomatis (TPE algorithm) |
-| **`mlflow`** | Experiment tracking: log params, metrics, model artifact |
-
----
-
-## 📊 Hasil Evaluasi (Validation Set)
-
-> *Tabel ini diisi setelah menjalankan notebook*
-
-| Model | AUC-ROC | F1-Score | Accuracy | Precision | Recall |
-|---|---|---|---|---|---|
-| LR Baseline |  0.7433 | 0.0935 | 0.6579 | 0.0502 | 0.6895 |
-| RF Baseline | 0.8754 | 0.3848 | 0.9547 | 0.2951 | 0.5527 |
-| XGB Baseline | 0.9272 | 0.3417 | 0.9248 | 0.2202 | 0.7617 |
-| **RF Optuna** | 0.9084 | 0.5693 | 0.9830 | 0.8145 | 0.4375 |
-| **XGB Optuna** | 0.9366 | 0.7119 | 0.9872 | 0.8445 | 0.6152 |
-
-**Metrik utama: AUC-ROC** — dipilih karena dataset sangat imbalanced (~3.5% fraud).
+| `optuna` | Hyperparameter tuning otomatis (TPE) |
+| `mlflow` | Experiment tracking & model logging |
+| `lime` | Interpretasi prediksi model (Task 2) |
+| `yellowbrick` | Visualisasi clustering |
 
 ---
 
@@ -126,29 +155,24 @@ Generate submission.csv
 
 1. **Clone repo ini**
    ```bash
-   git clone https://github.com/[username]/midterm-machine-learning.git
+   git clone https://github.com/fauziihadiwijaya/midterm-machine-learning.git
    ```
 
-2. **Download dataset** dari [Kaggle IEEE-CIS Fraud Detection](https://www.kaggle.com/competitions/ieee-fraud-detection/data)
-   - File: `train_transaction.csv`, `test_transaction.csv`
-   - Upload ke Google Drive: `MyDrive/midterm-ml/`
+2. **Upload dataset ke Google Drive** folder `midterm-m1`:
+   - `train_transaction.csv` & `test_transaction.csv` (Task 1)
+   - `midterm-regresi-dataset.csv` (Task 2)
+   - `clusteringmidterm.csv` (Task 3)
 
-3. **Buka di Google Colab**
-   - Upload `fraud_detection_ml_v2.ipynb`
-   - Sesuaikan `TRAIN_PATH` & `TEST_PATH` di cell Load Dataset
+3. **Buka notebook di Google Colab**
+   - Upload notebook yang diinginkan
    - Aktifkan GPU: `Runtime → Change runtime type → T4 GPU`
-   - Run All
-
-4. **Lihat MLflow UI** (opsional, jika run lokal)
-   ```bash
-   mlflow ui
-   # Buka browser: http://127.0.0.1:5000
-   ```
+   - Sesuaikan path dataset di cell Load Dataset
+   - `Runtime → Run all`
 
 ---
 
 ## 📦 Dependencies
 
 ```bash
-pip install numpy pandas matplotlib seaborn scikit-learn imbalanced-learn xgboost optuna mlflow
+pip install numpy pandas matplotlib seaborn scikit-learn xgboost imbalanced-learn optuna mlflow lime yellowbrick
 ```
