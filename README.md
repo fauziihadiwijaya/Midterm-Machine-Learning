@@ -96,16 +96,15 @@ Membangun model regresi untuk memprediksi tahun rilis lagu berdasarkan fitur aud
 
 **Hasil Evaluasi (Validation Set):**
 | Model | RMSE | MAE | R² | MSE |
-|---|---|---|---|
-| Ridge Baseline | 	9.256634 | 6.623822 | 0.222125 | 85.685270 |
-| RF Baseline | 9.110620 | 6.538893 | 0.246472 | 83.003405 |
-| XGB Baseline | 8.674649 | 6.144535 | 0.316864 | 	75.249527 |
-| RF Optuna | 9.016765 | 6.540256 | 0.261917 | 81.302048 |
-| XGB Optuna | 8.511491 | 6.028195 | 0.342319 | 72.445473 |
+|---|---|---|---|---|
+| Ridge Baseline | 9.2566 | 6.6238 | 0.2221 | 85.6853 |
+| RF Baseline | 9.1106 | 6.5389 | 0.2465 | 83.0034 |
+| XGB Baseline | 8.6746 | 6.1445 | 0.3169 | 75.2495 |
+| RF Optuna | 9.0168 | 6.5403 | 0.2619 | 81.3020 |
+| **XGB Optuna** | **8.5115** | **6.0282** | **0.3423** | **72.4455** |
 
-> 🏆 Best model: XGB_optuna
-   RMSE : 8.5115 tahun
-   R²   : 0.3423
+🏆 **Best model: XGB Optuna** — RMSE: 8.5115 tahun, R²: 0.3423
+
 
 ---
 
