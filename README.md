@@ -95,15 +95,17 @@ Membangun model regresi untuk memprediksi tahun rilis lagu berdasarkan fitur aud
 | XGBoost (Optuna) | 20 trials tuning |
 
 **Hasil Evaluasi (Validation Set):**
-| Model | RMSE | MAE | R² |
+| Model | RMSE | MAE | R² | MSE |
 |---|---|---|---|
-| Ridge Baseline | — | — | — |
-| RF Baseline | — | — | — |
-| XGB Baseline | — | — | — |
-| RF Optuna | — | — | — |
-| XGB Optuna | — | — | — |
+| Ridge Baseline | 	9.256634 | 6.623822 | 0.222125 | 85.685270 |
+| RF Baseline | 9.110620 | 6.538893 | 0.246472 | 83.003405 |
+| XGB Baseline | 8.674649 | 6.144535 | 0.316864 | 	75.249527 |
+| RF Optuna | 9.016765 | 6.540256 | 0.261917 | 81.302048 |
+| XGB Optuna | 8.511491 | 6.028195 | 0.342319 | 72.445473 |
 
-> *Isi tabel setelah notebook dijalankan*
+> 🏆 Best model: XGB_optuna
+   RMSE : 8.5115 tahun
+   R²   : 0.3423
 
 ---
 
