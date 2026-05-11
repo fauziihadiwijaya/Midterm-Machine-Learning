@@ -124,9 +124,9 @@ Membangun pipeline clustering untuk mengelompokkan customer berdasarkan perilaku
 **Hasil Evaluasi:**
 | Model | Silhouette ↑ | Davies-Bouldin ↓ | Calinski-Harabasz ↑ |
 |---|---|---|---|
-| K-Means | — | — | — |
-| Hierarchical | — | — | — |
-| DBSCAN | — | — | — |
+| K-Means | 0.2893 | 1.6013 | 2537.6547 |
+| Hierarchical | 0.2445 | 1.7188 | 1850.5362 |
+| DBSCAN | 0.0413 | 0.8551 | 28.1114 |
 
 > *Isi tabel setelah notebook dijalankan*
 
