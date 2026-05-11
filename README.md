@@ -62,13 +62,13 @@ Membangun model klasifikasi untuk memprediksi probabilitas transaksi online bers
 **Hasil Evaluasi (Validation Set):**
 | Model | AUC-ROC | F1-Score | Accuracy |
 |---|---|---|---|
-| LR Baseline | — | — | — |
-| RF Baseline | — | — | — |
-| XGB Baseline | — | — | — |
-| RF Optuna | — | — | — |
-| XGB Optuna | — | — | — |
+| LR Baseline | 0.7433 | 0.0935 | 0.6579 |
+| RF Baseline | 0.8754 | 0.3848 | 0.9547 |
+| XGB Baseline | 0.9272 | 0.3417 | 0.9248 |
+| RF Optuna | 0.9084 | 0.5693 | 0.9830 |
+| XGB Optuna | 0.9366 | 0.7119 | 0.9872 |
 
-> *Isi tabel setelah notebook dijalankan*
+> 🏆 Best: XGB_optuna (AUC-ROC: 0.9366)
 
 ---
 
